@@ -48,6 +48,9 @@ class BookParts extends StatelessWidget {
             title: 'Part 06',
             subTitle: 'Chapter 1050-1090',
           ),
+
+          // th os jbhffg jg jgf
+
           // BookSectionCard(
           //   id: 7,
           //   title: 'Part 07',
