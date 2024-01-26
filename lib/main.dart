@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:let_me_go/backend/isar_services.dart';
 import 'package:let_me_go/screens/home_screen.dart';
 import 'package:let_me_go/widgets/rounded_button.dart';
 import 'constants.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  //Initialize Get Storage
+  await GetStorage.init();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,7 +19,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Book App',
       theme: ThemeData(
@@ -32,6 +40,10 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Delay for 3 seconds
     Future.delayed(const Duration(seconds: 3), () {
+      //first load all the sections
+      final isarController = Get.put(IsarController());
+      isarController.getBookParts();
+
       // Navigate to the HomeScreen and remove the WelcomeScreen from the navigation stack
       Navigator.pushAndRemoveUntil(
         context,

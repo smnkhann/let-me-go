@@ -24,7 +24,7 @@ class BookSectionCard extends StatelessWidget {
     final isarController = Get.put(IsarController());
 
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         isarController.getJsonPath("assets/novel_data/part_$id.json");
         Navigator.push(
             context,

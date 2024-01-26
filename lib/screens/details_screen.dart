@@ -15,17 +15,21 @@ class ChaptersPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: SingleChildScrollView(
-        child: GetBuilder<IsarController>(
-          builder: (_) => Column(
-            children: <Widget>[
-              for (var chapter in isarController.chapters)
-                ChapterCard(
-                  title: chapter.title,
-                  subTitle: chapter.paragraphs[2].text,
-                  paragraphs: chapter.paragraphs,
-                ),
-            ],
+      body: PopScope(
+        canPop: true,
+        onPopInvoked: (val) {},
+        child: SingleChildScrollView(
+          child: GetBuilder<IsarController>(
+            builder: (_) => Column(
+              children: <Widget>[
+                for (var chapter in isarController.chapters)
+                  ChapterCard(
+                    title: chapter.title,
+                    subTitle: chapter.paragraphs[0].text,
+                    paragraphs: chapter.paragraphs,
+                  ),
+              ],
+            ),
           ),
         ),
       ),

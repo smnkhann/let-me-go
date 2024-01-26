@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:let_me_go/screens/settings_page.dart';
 import 'package:let_me_go/widgets/book_sections_page.dart';
-import 'package:let_me_go/widgets/last_opened_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -25,16 +24,53 @@ class HomeScreen extends StatelessWidget {
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  //LastOpenedCard(),
-
-                  //SizedBox(height: 10),
                   BookParts(),
+                  Settings(),
                 ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class Settings extends StatefulWidget {
+  const Settings({super.key});
+
+  @override
+  State<Settings> createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SizedBox(height: 10),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const SettingsPage()))
+                .then((value) {
+              setState(() {});
+            });
+          },
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.settings,
+                color: Colors.grey,
+              ),
+              SizedBox(width: 4),
+              Text('Settings'),
+            ],
+          ),
+        ),
+        const SizedBox(height: 10),
+      ],
     );
   }
 }

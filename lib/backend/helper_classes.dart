@@ -27,9 +27,10 @@ class ParagraphHelper {
 }
 
 class SubjectHelper {
+  int id;
   String title;
   String subTitle;
-  String readingTime;
+
   SubjectHelper(
-      {required this.title, required this.subTitle, required this.readingTime});
+      {required this.id, required this.title, required this.subTitle});
 }
